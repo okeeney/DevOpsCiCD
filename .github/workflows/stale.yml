@@ -1,0 +1,20 @@
+on: 
+  schedule:
+  - cron: "0 0 * * *"
+  
+jobs: 
+  stale: 
+  
+    permissions: 
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/stale@v3
+      with:
+        stale-issue-message: 'This issue has become stale. It will be automatically closed within the set time limit.'
+        stale-pr-message: 'This PR has become stale. It will be automatically closed within the set time limit.'
+        stale-issue-label: 'no-issue-activity'
+        stale-pr-label: 'no-pr-activity'
+        days-before-stale: 60
